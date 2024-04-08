@@ -20,7 +20,6 @@ class LuckyControllerTwig extends AbstractController
         $secondTime = strtotime($secondDate);
 
         $randomTime = rand($firstTime, $secondTime);
-        //$randomYearNr = rand(123456789, 123456789);
         
         $randomYear = date("Y-m-d H:i:s", $randomTime);
 

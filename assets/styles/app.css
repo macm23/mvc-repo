@@ -181,3 +181,15 @@ color: black;
     padding-right: 30px;
 
 }
+
+.kurs a {
+    font-size: 1.2em;
+    color: black;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.kurs {
+    padding-left: 10px;
+    padding-top: 20px;
+}
