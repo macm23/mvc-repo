@@ -2,6 +2,8 @@
 
 This repo is used for assignments in the dbwebb mvc course. Symfony is the web application framework used to create a website. 
 
+<img src="kmom01bild.png" alt="git-image" style="max-width: 200px">
+
 <h2>Instructions</h2>
 
 <b>Clone repo</b>
