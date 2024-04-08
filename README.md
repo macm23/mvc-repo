@@ -4,18 +4,26 @@ This repo is used for assignments in the dbwebb mvc course. Symfony is the web a
 
 <h2>Instructions</h2>
 
-<b>Clone repo<b>
-git clone git@github.com:macm23/mvc-repo.git
-
+<b>Clone repo</b>
+<br>
+<p>git clone git@github.com:macm23/mvc-repo.git</p>
+<br>
+<br>
 <b>Installations</b>
-composer install
-npm install
-
+<br>
+<p>composer install</p>
+<br>
+<p>npm install</p>
+<br>
+<br>
 <b>Build assets with Encore</b>
-npm run build
-
+<br>
+<p>npm run build</p>
+<br>
+<br>
 <b>Webserver</b>
-php -S localhost:8888
+<br>
+<p>php -S localhost:8888</p>
 
 
 
