@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Om mig</h1>
+    <p> Hej!
+Mitt namn är Madeleine och jag bor i Göteborg. Har en bakgrund inom statsvetenskap, men har under senare 
+tid blivit intresserad av programmering och webbutveckling, vilket är anledningen till att jag går den här kursen! 
+På fritiden gillar jag bland annat att fota, resa och att vara ute i naturen. 
+</p>
+
+<div class="image">
+<a href="{{ asset('img/IMG_0712.jpg') }}">
+        <img src="{{ asset('img/IMG_0712.jpg') }}" alt="">
+</a>
+</div>
+
+{% endblock %}
