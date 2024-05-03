@@ -5,31 +5,37 @@ namespace App\Card;
 use App\Card\Card;
 
 
-class CardHand
+class DeckOfCards
 {
-    private $hand = [];
-
+    
+    private $deck = [];
+   
     public function add(Card $card): void
     {
-        $this->hand[] = $card;
+        $this->deck[] = $card;
     }
 
-    public function roll(): void
+    public function shuffle(): void
     {
-        foreach ($this->hand as $card) {
-            $card->roll();
+        foreach ($this->deck as $card) {
+        
+            $card->shuffle();
         }
+
+       /* foreach ($this->deck as $card) {
+            $card->shuffle();
+        }*/
     }
 
     public function getNumberCards(): int
     {
-        return count($this->hand);
+        return count($this->deck);
     }
 
     public function getValues(): array
     {
         $values = [];
-        foreach ($this->hand as $card) {
+        foreach ($this->deck as $card) {
             $values[] = $card->getValue();
         }
         return $values;
@@ -38,7 +44,7 @@ class CardHand
     public function getString(): array
     {
         $values = [];
-        foreach ($this->hand as $card) {
+        foreach ($this->deck as $card) {
             $values[] = $card->getAsString();
         }
         return $values;

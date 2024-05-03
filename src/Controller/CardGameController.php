@@ -5,7 +5,7 @@ namespace App\Controller;
 
 use App\Card\Card;
 use App\Card\CardGraphic;
-use App\Card\CardHand;
+use App\Card\DeckOfCards;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -131,24 +131,20 @@ $data = [
     ): Response
     {
         $session->clear(); 
-
-        $cardValues = range(1, 52);
     
 $cardRoll1 = [];
-
-foreach ($cardValues as $cardValue) {
-    $card = new CardGraphic(); 
-    
-    $card->shuffle();
-    
-    $cardRepresentation = $card->getAsString();
-    
-    $cardRoll1[] = $cardRepresentation;
+$deck = new DeckOfCards();
+for ($i = 1; $i <= 52; $i++) {
+    $deck->add(new CardGraphic());
 }
+$deck->shuffle();
+$cardRepresentation = $deck->getString();
+$cardNum = $deck->getNumberCards();
+
 
         $data = [
-            "num_cards" => count($cardRoll1),
-            "cardRoll" => $cardRoll1
+            "num_cards" => $cardNum,
+            "cardRoll" => $cardRepresentation
         ];
 
         $session->set("cardRoll", $cardRoll1);
@@ -161,12 +157,20 @@ foreach ($cardValues as $cardValue) {
     {
 
         $cardRoll = [];
+
+        $deck = new DeckOfCards();
+       for ($i = 1; $i <= 1; $i++) {
+            $deck->add(new CardGraphic());
+        }
+        $deck->shuffle();
+$cardRepresentation = $deck->getString();
+$cardNum = $deck->getNumberCards();
         
-        for ($i = 1; $i <= 1; $i++) {
+        /*for ($i = 1; $i <= 1; $i++) {
             $cards = new CardGraphic();
             $cards->shuffle();
             $cardRoll[] = $cards->getAsString();            
-        }         
+        } */        
 
         $cardsLeft = $session->get('card_left', 52);
 
@@ -185,12 +189,12 @@ foreach ($cardValues as $cardValue) {
 
 
         $session->set("num_of_cards", 1); 
-        $session->set("card_deck", $cardRoll);
+        $session->set("card_deck", $cardRepresentation);
         $session->set("card_left", $cardsLeft);
 
         $data = [
             "num_cards" => 1,
-            "cardRoll" => $cardRoll,
+            "cardRoll" => $cardRepresentation,
             "cards_left" => $cardsLeft
         ];
 
