@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card Game{% endblock %}
+
+{% block body %}
+<h1>Draw one or more cards</h1>
+
+<ul class="cardNr">
+    <li> Number of cards: {{ num_cards }}</li>
+    <li> Cards left: {{ cards_left }}</li>
+</ul>
+
+
+<ul class="cardList">
+{% for roll in cardRoll %}
+    <li><div class="card">{{ roll }}</div></li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

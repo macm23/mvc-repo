@@ -1,6 +1,8 @@
 main {
     margin: 0 auto;
     max-width: 900px;
+    min-height: 1000px; 
+    padding-bottom: 200px;
 }
 
 h1 {
@@ -11,6 +13,7 @@ h1 {
 p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1em;
+    color: #201f1f;
 }
 
 .nav {
@@ -18,7 +21,27 @@ p {
     margin-left: 0;
 }
 
-ul {
+.apiStyle ul {
+text-decoration: none;    
+}
+
+.apiStyle a {
+    font-size: 1.2em; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+
+}
+
+.apiStyle a:link {
+    color: black;
+    text-decoration: none;
+}
+
+.apiStyle a:hover {
+border: 1px solid black;
+}
+
+.ulBase {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -29,17 +52,68 @@ ul {
     overflow: auto;
 }
 
-li { 
+.ulBase li { 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.5em;    
     font-weight: bolder;
 }
 
-li a {
+.ulBase li a {
     text-decoration: none;
     color: black;
     display: block;
     padding: 8px 16px;
+
+}
+
+.cardList ul {
+    background-color: #f1f1f1;
+    margin: 0;
+    padding: 0;
+}
+
+.cardList li {
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+
+}
+
+.cardList li a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    
+}
+
+.cardColorRed {
+    color: rgb(214, 8, 8);
+}
+
+.red-card {
+    color: rgb(214, 8, 8);
+}
+
+.black-card {
+    color: rgb(0, 0, 0);
+}
+
+.cardNr {
+    min-width: 300px;
+    background-color: #f1f1f1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;    
+    font-weight: bolder;
+}
+
+.cardNr li {
+    list-style-type: none;
+}
+
+.card {
+    font-size: 4em;
+    list-style-type: none;
 
 }
 
@@ -192,4 +266,89 @@ color: black;
 .kurs {
     padding-left: 10px;
     padding-top: 20px;
+}
+
+/* 
+* kmom02
+s
+body {
+    margin: 0 auto;
+    max-width: 800px;
+    background-color: #eee;
+    font-size: 2em;
+}*/
+
+input {
+    font-size: 1em;
+}
+
+/*h1 {
+    border-bottom: 4px double green;
+}
+*/
+.die {
+    font-size: 3em;
+}
+
+
+/* flash */
+
+.flash-notice {
+    padding: 0.5em;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+.flash-notice:before {
+    content: "ⓘ";
+}
+
+.flash-warning {
+    padding: 0.5em;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.flash-warning:before {
+    content: "⚠";
+}
+
+
+input {
+    border: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  input[type="submit"]:hover {
+    border: 1px solid black;
+  }
+
+
+
+.cardFrontPage ul {
+    text-decoration: none;    
+}
+    
+.cardFrontPage a {
+        font-size: 1.2em; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 500;
+    
+}
+    
+.cardFrontPage a:link {
+        color: black;
+        text-decoration: none;
+}
+    
+.cardFrontPage a:hover {
+    border: 1px solid black;
+}
+
+
+.imageCard img {
+    margin-left: 30%;
 }

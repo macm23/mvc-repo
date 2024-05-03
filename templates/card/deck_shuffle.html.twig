@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Shuffled Deck of Cards{% endblock %}
+
+{% block body %}
+    <h1>Shuffled Deck of Cards</h1>
+
+    <p>Number of Cards: {{ num_cards }}</p>
+
+   <ul class="cardList">
+{% for roll in cardRoll %}
+    <li><div class="card">{{ roll }}</div></li>
+{% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card game{% endblock %}
+
+{% block body %}
+<h1>Cardgame</h1>
+
+
+<h1>Deck of cards</h1>
+
+
+<ul class="cardList">
+{% for roll in cardRoll1 %}
+    <li><div class="card">{{ roll }}</div></li>
+{% endfor %}
+</ul>
+
+<ul class="cardList">
+{% for roll in cardRoll2 %} 
+    <li><div class="card"><span class="cardColorRed">{{ roll }}</span></div></li>
+{% endfor %}
+</ul>
+
+<ul class="cardList">
+{% for roll in cardRoll4 %} 
+    <li><div class="card">{{ roll }}</div></li>
+{% endfor %}
+</ul>
+
+<ul class="cardList">
+{% for roll in cardRoll3 %} 
+    <li><div class="card"><span class="cardColorRed">{{ roll }}</span></div></li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

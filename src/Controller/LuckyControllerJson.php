@@ -2,13 +2,19 @@
 
 namespace App\Controller;
 
+use App\Card\Card;
+use App\Card\CardGraphic;
+use App\Card\CardHand;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class LuckyControllerJson
 {
-    #[Route("/api")]
+    #[Route("/api/routes")]
     public function jsonNumber(): Response
     {
 
@@ -16,18 +22,18 @@ class LuckyControllerJson
             'lucky-message' => 'Routes'
         ];
 
-       // return new JsonResponse($data);
+        // return new JsonResponse($data);
 
-       $response = new JsonResponse($data);
-       $response->setEncodingOptions(
-           $response->getEncodingOptions() | JSON_PRETTY_PRINT
-       );
-       return $response;
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 
 
-    
-    #[Route("/api/quote")]
+
+    #[Route("/api/quote", name: "quote")]
     public function jsonQuote(): Response
     {
         $quotes = array(
@@ -36,28 +42,29 @@ class LuckyControllerJson
             "Sometimes I'll start a sentence and I don't even know where it's going. I just hope I find it along the way. - Michael Scott"
         );
 
-        
+
 
         $randomQuote = $quotes[array_rand($quotes)];
 
-        date_default_timezone_set('Europe/Stockholm');	
-        
-        $date = date('Y-m-d H:i:s'); 
+        date_default_timezone_set('Europe/Stockholm');
 
-    
+        $date = date('Y-m-d H:i:s');
+
+
 
         $data = [
             'Quote of the day' => $randomQuote,
             'Date' => $date
         ];
 
-       // return new JsonResponse($data);
+        // return new JsonResponse($data);
 
-       $response = new JsonResponse($data); 
-       $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
-       $response->setEncodingOptions(
-           $response->getEncodingOptions() | JSON_PRETTY_PRINT
-       );
-       return $response;
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
+
 }

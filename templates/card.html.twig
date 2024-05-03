@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cards Game{% endblock %}
+
+{% block body %}
+<h1>Cardgame</h1>
+
+<ul class="cardFrontPage">
+        <li><a href="{{ path('show_cards') }}">Show all cards</a></li>
+        <li><a href="{{ path('draw_cards_get_one') }}">Draw one or multiple cards</a></li>
+        <li><a href="{{ path('shuffle_cards') }}">Shuffle cards</a></li>
+        <li><a href="{{ path('session_landing_page') }}">Session</a></li>
+        <li><a href="{{ path('session_delete_page') }}">Delete session</a></li>
+</ul>
+<br>
+<br>
+<p> Jag använder två klasser; Card och CardGraphic. CardGraphic ärver från Card-klassen och visar en grafisk 
+representation av korten i kortleken. 
+<br>
+<br>
+<br>
+
+<div class="imageCard">
+<a href="{{ asset('img/cardgame.png') }}">
+        <img src="{{ asset('img/cardgame.png') }}" alt="">
+</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Pig Game{% endblock %}
+
+{% block body %}
+<h1>Pig game [PLAYING]</h1>
+
+<p>Roll the dices or save the points you have.</p>
+
+<p>You are playing with {{ pigDices }} dices.</p>
+
+<p>
+    {% for value in cardValues %}
+        <span class="die">{{ value }}</span>
+    {% endfor %}
+</p>
+
+<form method="post" action="">
+    <p>
+        <input type="submit" name="roll" value="Roll"
+    onClick="this.form.action='{{ path('card_roll') }}';"
+    >
+
+    <input type="submit" name="save" value="Save"
+    onClick="this.form.action='{{ path('card_save') }}';">
+
+        <input type="submit" name="restart" value="Restart"
+    onClick="this.form.action='{{ path('card_init_get') }}';this.form.method='get';">
+    </p>
+</form>
+
+{% endblock %}
