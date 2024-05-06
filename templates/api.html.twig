@@ -20,7 +20,7 @@
     ></li>
     <p> POST route that shuffles and returns the deck in JSON. It is also saved in the session.</p>
 
-    <li><input type="number" name="num_cards" min="1" max="52" value="1">
+    <li>
     <input type="submit" name="do_it" value="Draw cards" 
     onClick="this.form.action='{{ path('draw_multiple_cards_json') }}';"
     ></li>
@@ -29,14 +29,5 @@
 
 </form>
 
-
-{% if num_cards is defined and cardRoll is defined %}
-    <p>Number of cards: {{ num_cards }}</p>
-    <ul class="cardList">
-        {% for card in cardRoll %}
-            <li><div class="card">{{ card }}</div></li>
-        {% endfor %}
-    </ul>
-{% endif %}
 
 {% endblock %}

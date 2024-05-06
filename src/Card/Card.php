@@ -16,7 +16,7 @@ class Card
         $this->value = random_int(1, 52);
         return $this->value;
     }
-  
+
 
     public function getValue(): int
     {
@@ -33,7 +33,7 @@ class Card
         return "[{$this->value}]";
     }
 
-    
+
 
 
 }

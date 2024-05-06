@@ -4,7 +4,7 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-    // 
+    //
     private $representation = [
         '🃑',
         '🃒',
@@ -65,7 +65,7 @@ class CardGraphic extends Card
         parent::__construct();
     }
 
-  
+
 
     public function getAsString(): string
     {

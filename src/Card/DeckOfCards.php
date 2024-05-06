@@ -4,12 +4,10 @@ namespace App\Card;
 
 use App\Card\Card;
 
-
 class DeckOfCards
 {
-    
     private $deck = [];
-   
+
     public function add(Card $card): void
     {
         $this->deck[] = $card;
@@ -18,13 +16,13 @@ class DeckOfCards
     public function shuffle(): void
     {
         foreach ($this->deck as $card) {
-        
+
             $card->shuffle();
         }
 
-       /* foreach ($this->deck as $card) {
-            $card->shuffle();
-        }*/
+        /* foreach ($this->deck as $card) {
+             $card->shuffle();
+         }*/
     }
 
     public function getNumberCards(): int

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Card\Card;
 use App\Card\CardGraphic;
 use App\Card\DeckOfCards;
@@ -15,25 +14,23 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
-{    
+{
     #[Route("/session", name: "session_landing_page")]
-    public function session(        
+    public function session(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         $data = [
-            'session' => $session->all()    
+            'session' => $session->all()
         ];
 
         return $this->render('card/session.html.twig', $data);
     }
 
     #[Route("/session/delete", name: "session_delete_page")]
-    public function sessionDelete(        
+    public function sessionDelete(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
 
         $session->clear();
 
@@ -56,90 +53,89 @@ class CardGameController extends AbstractController
 
 
     #[Route("/card/deck", name: "show_cards")]
-    public function cardDeck(SessionInterface $session
-    ): Response
-    {
+    public function cardDeck(
+        SessionInterface $session
+    ): Response {
 
-$cardValues = range(1, 13);
-$cardValues2 = range(14, 26);
-$cardValues3 = range(27, 39);
-$cardValues4 = range(40, 52);
-
-
-    
-$cardRoll1 = [];
-
-foreach ($cardValues as $cardValue) {
-    $card = new CardGraphic();
-    
-    $card->setValue($cardValue);
-    
-    $cardRepresentation = $card->getAsString();
-    
-    $cardRoll1[] = $cardRepresentation;
-}
-
-$cardRoll2 = [];
-foreach ($cardValues2 as $cardValue) {
-    $card = new CardGraphic(); 
-    
-    $card->setValue($cardValue);
-    
-    $cardRepresentation = $card->getAsString();
-    
-    $cardRoll2[] = $cardRepresentation;
-}
-
-$cardRoll3 = [];
-foreach ($cardValues3 as $cardValue) {
-    $card = new CardGraphic(); 
-    
-    $card->setValue($cardValue);
-
-    $cardRepresentation = $card->getAsString();
-    
-    $cardRoll3[] = $cardRepresentation;
-}
-
-$cardRoll4 = [];
-foreach ($cardValues4 as $cardValue) {
-    $card = new CardGraphic(); 
-
-    $card->setValue($cardValue);
-    
-    $cardRepresentation = $card->getAsString();
-    
-    $cardRoll4[] = $cardRepresentation;
-}
+        $cardValues = range(1, 13);
+        $cardValues2 = range(14, 26);
+        $cardValues3 = range(27, 39);
+        $cardValues4 = range(40, 52);
 
 
-$data = [
-    "num_cards" => count($cardRoll1),
-    "cardRoll1" => $cardRoll1,
-    "cardRoll2" => $cardRoll2,
-    "cardRoll3" => $cardRoll3, 
-    "cardRoll4" => $cardRoll4
-];
+
+        $cardRoll1 = [];
+
+        foreach ($cardValues as $cardValue) {
+            $card = new CardGraphic();
+
+            $card->setValue($cardValue);
+
+            $cardRepresentation = $card->getAsString();
+
+            $cardRoll1[] = $cardRepresentation;
+        }
+
+        $cardRoll2 = [];
+        foreach ($cardValues2 as $cardValue) {
+            $card = new CardGraphic();
+
+            $card->setValue($cardValue);
+
+            $cardRepresentation = $card->getAsString();
+
+            $cardRoll2[] = $cardRepresentation;
+        }
+
+        $cardRoll3 = [];
+        foreach ($cardValues3 as $cardValue) {
+            $card = new CardGraphic();
+
+            $card->setValue($cardValue);
+
+            $cardRepresentation = $card->getAsString();
+
+            $cardRoll3[] = $cardRepresentation;
+        }
+
+        $cardRoll4 = [];
+        foreach ($cardValues4 as $cardValue) {
+            $card = new CardGraphic();
+
+            $card->setValue($cardValue);
+
+            $cardRepresentation = $card->getAsString();
+
+            $cardRoll4[] = $cardRepresentation;
+        }
+
+
+        $data = [
+            "num_cards" => count($cardRoll1),
+            "cardRoll1" => $cardRoll1,
+            "cardRoll2" => $cardRoll2,
+            "cardRoll3" => $cardRoll3,
+            "cardRoll4" => $cardRoll4
+        ];
         $session->set("cardRoll1", ($cardRoll1));
-          
+
         return $this->render('card/deck.html.twig', $data);
     }
 
     #[Route("/card/deck/shuffle", name: "shuffle_cards")]
     public function cardDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
-        $session->clear(); 
-    
-$cardRoll1 = [];
-$deck = new DeckOfCards();
-for ($i = 1; $i <= 52; $i++) {
-    $deck->add(new CardGraphic());
-}
-$deck->shuffle();
-$cardRepresentation = $deck->getString();
-$cardNum = $deck->getNumberCards();
+    ): Response {
+        $session->clear();
+
+        $cardRoll1 = [];
+        $deck = new DeckOfCards();
+        for ($i = 1; $i <= 52; $i++) {
+            $deck->add(new CardGraphic());
+        }
+        $deck->shuffle();
+        $cardRepresentation = $deck->getString();
+        $cardNum = $deck->getNumberCards();
 
 
         $data = [
@@ -152,25 +148,25 @@ $cardNum = $deck->getNumberCards();
         return $this->render('card/deck_shuffle.html.twig', $data);
     }
 
-#[Route("/card/deck/draw", name: "draw_cards_get_one", methods: "GET")]
+    #[Route("/card/deck/draw", name: "draw_cards_get_one", methods: "GET")]
     public function cardDeckDrawOne(SessionInterface $session): Response
     {
 
         $cardRoll = [];
 
         $deck = new DeckOfCards();
-       for ($i = 1; $i <= 1; $i++) {
+        for ($i = 1; $i <= 1; $i++) {
             $deck->add(new CardGraphic());
         }
         $deck->shuffle();
-$cardRepresentation = $deck->getString();
-$cardNum = $deck->getNumberCards();
-        
+        $cardRepresentation = $deck->getString();
+        $cardNum = $deck->getNumberCards();
+
         /*for ($i = 1; $i <= 1; $i++) {
             $cards = new CardGraphic();
             $cards->shuffle();
-            $cardRoll[] = $cards->getAsString();            
-        } */        
+            $cardRoll[] = $cards->getAsString();
+        } */
 
         $cardsLeft = $session->get('card_left', 52);
 
@@ -182,13 +178,13 @@ $cardNum = $deck->getNumberCards();
             throw new \Exception("Not enough cards left to draw!");
         }
 
-     
+
         if (0 > $cardsLeft) {
             throw new \Exception("Not enough cards left!");
         }
 
 
-        $session->set("num_of_cards", 1); 
+        $session->set("num_of_cards", 1);
         $session->set("card_deck", $cardRepresentation);
         $session->set("card_left", $cardsLeft);
 
@@ -198,12 +194,12 @@ $cardNum = $deck->getNumberCards();
             "cards_left" => $cardsLeft
         ];
 
- 
+
         return $this->render('card/draw_cards.html.twig', $data);
     }
 
 
-   #[Route("/card/deck/draw/{num<\d+>}", name: "draw_cards_get", methods: "GET")]
+    #[Route("/card/deck/draw/{num<\d+>}", name: "draw_cards_get", methods: "GET")]
     public function cardDeckDraw(int $num, SessionInterface $session): Response
     {
 
@@ -211,14 +207,14 @@ $cardNum = $deck->getNumberCards();
             throw new \Exception("Can not draw more than 52 cards!");
         }
 
-        
+
         $cardRoll = [];
-        
+
         for ($i = 1; $i <= $num; $i++) {
             $cards = new CardGraphic();
             $cards->shuffle();
-            $cardRoll[] = $cards->getAsString();            
-        }         
+            $cardRoll[] = $cards->getAsString();
+        }
 
         $cardsLeft = $session->get('card_left', 52);
 
@@ -231,7 +227,7 @@ $cardNum = $deck->getNumberCards();
         }
 
 
-        $session->set("num_of_cards", $num); 
+        $session->set("num_of_cards", $num);
         $session->set("card_deck", $cardRoll);
         $session->set("card_left", $cardsLeft);
 
@@ -240,10 +236,10 @@ $cardNum = $deck->getNumberCards();
             "cardRoll" => $cardRoll,
             "cards_left" => $cardsLeft
         ];
-        
+
 
         return $this->render('card/draw_cards.html.twig', $data);
     }
-    
+
 
 }
