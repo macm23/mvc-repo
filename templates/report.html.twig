@@ -13,38 +13,80 @@
     <li><a href="#kmom05">kmom05</a></li>
     <li><a href="#kmom06">kmom06</a></li>
     <li><a href="#kmom07">kmom07</a></li>
-    <li><a href="#kmom08">kmom08</a></li>
-    <li><a href="#kmom09">kmom09</a></li>
-    <li><a href="#kmom10">kmom10</a></li>
 </ul>
 </div>
-
-<div class="report">
-<h2 id="kmom01">kmom01</h2>
-
-<p> Jag hade ingen speciell tidigare erfarenhet av objektorientering i PHP, så allt var 
+<div class="report1">
+<h2 id="kmom01">kmom01</h2><pre class="pre"><p>
+Jag hade ingen tidigare erfarenhet av objektorientering i PHP, så allt var 
 väldigt nytt för mig. Efter att ha gjort övningen och sedan arbetat mig igenom den här 
 uppgiften tycker jag att strukturen med Twig-templates och controller-filerna känns hyfsat lätt att förstå.  
-<br>
-<br>
+
 För att komma igång med att skapa klasser i PHP så behöver man också förstå vad objekt, metoder och "properties" är då dessa 
 hänger ihop. Klassen är en slags mall; properties är variabler som man använder i klasser och är värdet på alla variablerna i objektet; 
 metoderna är det man gör med själva objektet. 
-<br>
-<br>
+
 Jag tycker att "PHP The Right Way" var ett lättöverskådlig dokument. Jag gillade att man kunde läsa igenom lite basic information för 
 att friska upp minnet lite. Jag tyckte också att avsnittet "Code Style Guide" var bra, då det fanns olika länkar gällande olika stilar att läsa vidare om. 
 Avsnittet om templates var givande då det är något nytt för den här 
 kursen. 
+
 Avsnittet om säkerhet tycker jag var intressant och skulle gärna lära mig mer om det. Jag vet 
 att vi har gått igenom lite säkerhetsaspekter i tidigare kurser, men det skulle vara intressant 
 att fokusera ännu mer på det.
 
-<br>
-<br>
+
 TIL hur man använder json_encode()
 
+</pre>
+</div>
 
+<div class="report1">
+<h2 id="kmom02">kmom02</h2>
+<pre>
+<p>
+Arv innebär att ett kod uttökar en klass. För att använda den här uppgiften som exempel så är 
+den grafiska representationen (CardGraphic) av korten i min kod ett arv och jag kunde ersätta föräldraklassen Card med den.
+Komposition innebär att en klass innehåller en annan klass och den går inte att använda utan den. 
+Interface innebär att man beskriver specifika publika metoder som en klass ska kunna implementera. Man kan sedan 
+använda ett interface i en klass för att kunna använda dessa metoder. Trait innebär att man återanvänder delar av kod i olika typer av klasser. 
+
+Jag blev ganska nöjd med mitt resultat. Finns dock en del förbättringspotential i den grafiska representationen av 
+korten exempelvis, då jag inte riktigt lyckades med att ha färg på dem.
+Jag lyckades göra det när jag skulle ha de sorterade, men inte när jag skulle blanda dem och på grund av tidsbrist så hann jag inte fixa det.
+Hade gärna utvecklat min DeckOfCards klass med då jag känner mig lite osäker på komposition fortfarande.
+
+Jag tycker att det är kul att jobba i Symfony, men det är mycket nytt att lära sig. Jag tycker att kursmomentet 
+tog längre tid än vad jag hade förväntat mig. Jag tyckte också att det var lite oklart med vissa instruktioner kring 
+POST-formuläret i JSON, men hoppas att sättet som jag jag tolkade uppgiften är okej. 
+
+
+TIL hur man använder uttökar en klass med arv.
+
+</pre>
+</div>
+
+<div class="report1">
+<h2 id="kmom03">kmom03</h2>
+<pre>
+<p>
+Jag uppskattade att göra ett flödesdiagram innan jag började att koda då det fick mig att tänka efter mycket mer i hur spelet skulle fungera. Jag  
+tror att jag lade ner mer eftertanke i det än om jag skulle börjat att koda direkt och det hjälpte mig att bygga upp koden för logiken i spelet lättare. 
+Pseudokoden tyckte jag var lite svårare att förhålla mig till en början då jag kände mig lite osäker på hur exakt jag skulle formulera mig på ett korrekt sätt. 
+
+Jag återanvände mycket av de klasser som jag gjort från tidigare uppgifter och justerade där det behövdes. Jag använde mig även av 
+tärningsspelet vi gjort i en övningsuppgift som grund och inspiration för det här spelet i hur routerna skulle fungera. 
+Jag blev ganska nöjd med resultatet. Dock blev jag inte helt nöjd med att när man ska starta spelet så kommer det först upp ett random kort innan man har börjat. 
+Det kortet sparas inte i handen och poängen räknas ej, men det stör mig lite att det ligger där. Dock hann jag inte komma fram till en bättre lösning i hur man får bort det, 
+så jag lät det vara men det är något jag hade fixat om jag haft mer tid. 
+
+Jag tror även att jag hade kunnat göra ett bättre jobb med klasserna. Jag känner mig fortfarande inte helt bekväm med att skapa klasser då det fortfarande är mycket nytt, 
+vilket har inneburit att jag inte riktigt varit säker på hur man bäst lägger upp klasserna. 
+
+För övrigt så tycker jag om att koda i Symfony. Det är ett ganska lättföreståligt ramverk och jag tycker det har varit smidigt att arbeta i hittills.
+
+TIL hur man ger värden till en grafisk representation i en klass för att få en fungerande kortlek till ett spel. 
+
+</pre>
 </div>
 
 {% endblock %}

@@ -1,0 +1,49 @@
+.reportUl {
+    float: right;
+    position:relative;
+}
+
+.reportUl ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 100px;
+    min-width: 200px;
+    background-color: #f1f1f1;
+    height: 460px;
+    overflow: auto;
+}
+
+.reportUl li { 
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 1.5em;    
+font-weight: bolder;
+padding-left: 40px;
+padding-bottom: 10px;
+padding-top: 20px;
+}
+
+.reportUl  li a {
+text-decoration: none;
+color: black;
+}
+
+
+
+
+.report {
+    margin-top: 70px;
+    padding-right: 30px;
+
+}
+
+.kurs a {
+    font-size: 1.2em;
+    color: black;
+    text-decoration: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.kurs {
+    padding-left: 10px;
+    padding-top: 20px;
+}

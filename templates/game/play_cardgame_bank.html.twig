@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21 Game{% endblock %}
+
+{% block body %}
+<h1>[PLAYING]</h1>
+
+<div class="gameLayout">
+
+
+<div class="flashGame">
+{{ include('flash.html.twig') }}
+</div>
+
+
+<ul class="cardList">
+{% for card in cardDeckBack %}
+    <li><div class="card">{{ card }}</div></li>
+{% endfor %}
+</ul>
+
+
+<form class="cardGameFront" method="post" action="">
+ 
+      <p>
+        <input type="submit" name="stop" value="Stop"
+    onClick="this.form.action='{{ path('play_cardgame_3') }}';">
+
+    </p>
+
+
+      <p>
+        <input type="submit" name="take a card" value="Take a card"
+    onClick="this.form.action='{{ path('draw_card_bank') }}';">
+
+    </p>
+</form>
+
+</div>
+
+{% endblock %}

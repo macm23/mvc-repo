@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game Documentation{% endblock %}
+
+{% block body %}
+<h1 class="cardGameRubrik">Game docs</h1>
+<pre>
+<p> 
+<h2> Flowchart </h2>
+
+<div class="imageFlowchart">
+        <img src="{{ asset('img/flowchart21.drawio.png') }}" alt="">
+</a>
+</div>
+
+<h2> Pseudocode </h2>
+Skapar en ny hand med kort 
+
+FOR ett kort som plockas 
+    kortet sparas i en hand
+ENDFOR 
+
+FOR varje kort som dras 
+    värdet på kortet sparas i korthanden i sessionen 
+    IF totalt värde är större än 21
+        THEN förlust för spelaren
+        break  
+        
+    ELSE IF totalt värde är lika med 21 
+        THEN vinst för spelaren 
+        break 
+    ENDIF
+ENDFOR  
+
+Om spelaren stoppar spelet; värdet sparas och går till bankens tur 
+
+WHILE totalt kortvärde är mindre än 17 
+    plockar kort 
+            IF totalt kortvärde är lika med eller större än 17  
+                THEN break loop 
+ENDWHILE 
+            
+IF totalt värde är större än 21
+    THEN förlust för bank 
+        
+ELSE IF totalt värde är lika med 21 
+    THEN vinst för bank 
+    
+ELSE IF totalt värde är lika med spelarens resultat 
+    THEN vinst för bank 
+ENDIF 
+
+
+</p>
+</pre>
+<br>
+<br> 
+<br>
+
+{% endblock %}

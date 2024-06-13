@@ -20,9 +20,7 @@ class DeckOfCards
             $card->shuffle();
         }
 
-        /* foreach ($this->deck as $card) {
-             $card->shuffle();
-         }*/
+
     }
 
     public function getNumberCards(): int

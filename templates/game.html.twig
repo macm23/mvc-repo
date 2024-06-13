@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cards Game{% endblock %}
+
+{% block body %}
+<h1 class="cardGameRubrik">Cardgame</h1>
+
+<p> 
+"Tjugoett är ett kortspel som är den svenska motsvarigheten till det internationellt spridda kortspelet Black Jack. 
+De viktigaste skillnaderna mellan dessa två spel är dels kortens värde, dels att bankiren i tjugoett spelar mot en 
+spelare i taget och inte som i Black Jack mot alla på en gång. Båda spelen leder sitt ursprung till vingt-et-un, 
+som spelades vid det franska hovet på 1700-talet." FRÅN WIKIPEDIA SKRIV OM
+
+</p>
+
+<br>
+<br> 
+<br>
+
+<div class="playButton">
+<form method="post" action="">
+    <p>
+        <input type="submit" name="play" value="Play the game"
+    onClick="this.form.action='{{ path('play_cardgame_get') }}';this.form.method='get';">
+
+
+    </p>
+</form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<ul class="cardGameDoc">
+        <li><a href="{{ path('game_doc') }}">Show game documentation</a></li>
+</ul>
+
+
+{% endblock %}

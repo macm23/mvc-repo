@@ -1,0 +1,22 @@
+main {
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 1000px; 
+    padding-bottom: 200px;
+}
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 2em;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    color: #201f1f;
+}
+
+.nav {
+    float: left;
+    margin-left: 0;
+}

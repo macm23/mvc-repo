@@ -1,0 +1,60 @@
+{% extends "base.html.twig" %}
+
+{% block title %}21 Game{% endblock %}
+
+{% block body %}
+<h1>[PLAYING]</h1>
+
+<div class="gameLayout">
+
+<div class="flashGame">
+{{ include('flash.html.twig') }}
+</div>
+
+<div class="player">Player</div>
+
+<div class="cardRound">Current card points {{ total }}</div>
+<div class="cardRound">Total points: {{ round }}</div>
+
+
+<ul class="cardList">
+{% for card in cardDeckBack %}
+    <li><div class="card">{{ card }}</div></li>
+{% endfor %}
+</ul>
+
+
+<ul class="cardList">
+{% for card in cardValues %}
+    <li><div class="card">{{ card }}</div></li>
+{% endfor %}
+</ul>
+
+
+
+<form class="cardGame" form method="post" action="">
+    <p>
+        <input type="submit" name="play" value="Take 1 card"
+    onClick="this.form.action='{{ path('draw_card') }}';"
+    >
+
+    </p>
+
+      <p>
+        <input type="submit" name="stop" value="Stop"
+    onClick="this.form.action='{{ path('play_cardgame_bank_get') }}';"
+    >
+
+    </p>
+
+     <p>
+        <input type="submit" name="restart" value="Restart game"
+    onClick="this.form.action='{{ path('play_cardgame_get') }}';"
+    >
+
+    </p>
+</form>
+
+</div>
+
+{% endblock %}

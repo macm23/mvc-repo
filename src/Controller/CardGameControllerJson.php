@@ -230,4 +230,25 @@ class CardGameControllerJson
         return $response;
     }
 
+    #[Route("/api/game", name: "game_json", methods: ['GET'])]
+    public function gameJson(
+        SessionInterface $session
+    ): Response {
+
+
+        $data = [
+            "player_points" => $session->get("cardgame_round"),
+            "bank_points" => $session->get("cardgame_round_bank")
+        ];
+
+   
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
+        $response->setEncodingOptions(JSON_UNESCAPED_UNICODE);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
 }
