@@ -6,8 +6,8 @@ use App\Card\Game;
 
 class CardGameHand
 {
-    /** 
- * @var CardGame[] 
+    /**
+ * @var CardGame[]
  */
     private $deck = [];
 
@@ -39,9 +39,9 @@ class CardGameHand
         return $handValue;
     }
 
-/**
-     * @return int[]
-     */
+    /**
+         * @return int[]
+         */
     public function getValues(): array
     {
         $values = [];
@@ -64,7 +64,8 @@ class CardGameHand
         return $values;
     }
 
-    public function getTotalValue(): int {
+    public function getTotalValue(): int
+    {
         $total = 0;
         foreach ($this->deck as $card) {
             $total += $card->getValue();
@@ -72,5 +73,5 @@ class CardGameHand
         return $total;
     }
 
-   
+
 }

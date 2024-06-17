@@ -4,9 +4,9 @@ namespace App\Game;
 
 class CardGame
 {
-     /**
-     * @var int
-     */
+    /**
+    * @var int
+    */
     protected $value;
 
     public function __construct() // sätter värdet till noll varje gång man instanserar klassen

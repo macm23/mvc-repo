@@ -4,7 +4,7 @@ namespace App\Dice;
 
 class Dice
 {
-      /**
+    /**
      * @var int
      */
     protected $value;

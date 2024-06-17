@@ -97,45 +97,45 @@ class DiceGameController extends AbstractController
          return $this->redirectToRoute('pig_play');
      }*/
 
-   /* #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
-    public function initCallback(
-        Request $request,
-        SessionInterface $session
-    ): Response {
-         /**
-         * @var DiceHand
-         */
-    /*    $numDice = $request->request->get('num_dices');
+/* #[Route("/game/pig/init", name: "pig_init_post", methods: ['POST'])]
+ public function initCallback(
+     Request $request,
+     SessionInterface $session
+ ): Response {
+      /**
+      * @var DiceHand
+      */
+/*    $numDice = $request->request->get('num_dices');
 
-        $hand = new DiceHand();
-        for ($i = 1; $i <= $numDice; $i++) {
-            $hand->add(new DiceGraphic());
-        }
-        $hand->roll();
-
-        $session->set("pig_dicehand", $hand);
-        $session->set("pig_dices", $numDice);
-        $session->set("pig_round", 0);
-        $session->set("pig_total", 0);
-
-        return $this->redirectToRoute('pig_play');
+    $hand = new DiceHand();
+    for ($i = 1; $i <= $numDice; $i++) {
+        $hand->add(new DiceGraphic());
     }
+    $hand->roll();
 
-    /*#[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
-    public function play(): Response
-    {
-        // Logic to play the game
+    $session->set("pig_dicehand", $hand);
+    $session->set("pig_dices", $numDice);
+    $session->set("pig_round", 0);
+    $session->set("pig_total", 0);
 
-        return $this->render('pig/play.html.twig');
-    }*/
+    return $this->redirectToRoute('pig_play');
+}
 
-   /* #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
-    public function play(
-        SessionInterface $session
-    ): Response {
-        /**
-         * @var DiceHand
-         */
+/*#[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
+public function play(): Response
+{
+    // Logic to play the game
+
+    return $this->render('pig/play.html.twig');
+}*/
+
+/* #[Route("/game/pig/play", name: "pig_play", methods: ['GET'])]
+ public function play(
+     SessionInterface $session
+ ): Response {
+     /**
+      * @var DiceHand
+      */
 
 /*        $dicehand = $session->get("pig_dicehand");
 
@@ -149,7 +149,7 @@ class DiceGameController extends AbstractController
         return $this->render('pig/play.html.twig', $data);
     }
 
-    
+
 
     #[Route("/game/pig/roll", name: "pig_roll", methods: ['POST'])]
     public function roll(
@@ -189,23 +189,23 @@ class DiceGameController extends AbstractController
         return $this->render('pig/play.html.twig');
     }*/
 
-   /* #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
-    public function save(
-        SessionInterface $session
-    ): Response {
-        $roundTotal = $session->get("pig_round");
-        $gameTotal = $session->get("pig_total");
+/* #[Route("/game/pig/save", name: "pig_save", methods: ['POST'])]
+ public function save(
+     SessionInterface $session
+ ): Response {
+     $roundTotal = $session->get("pig_round");
+     $gameTotal = $session->get("pig_total");
 
-        $session->set("pig_round", 0);
-        $session->set("pig_total", $roundTotal + $gameTotal);
+     $session->set("pig_round", 0);
+     $session->set("pig_total", $roundTotal + $gameTotal);
 
-        $this->addFlash(
-            'notice',
-            'Your round was saved to the total!'
-        );
+     $this->addFlash(
+         'notice',
+         'Your round was saved to the total!'
+     );
 
-        return $this->redirectToRoute('pig_play');
-    }
+     return $this->redirectToRoute('pig_play');
+ }
 
 
 }

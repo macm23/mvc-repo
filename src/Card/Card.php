@@ -4,9 +4,9 @@ namespace App\Card;
 
 class Card
 {
-     /**
-     * @var int
-     */
+    /**
+    * @var int
+    */
     protected $value;
 
     public function __construct() // sätter värdet till noll varje gång man instanserar klassen
@@ -26,7 +26,7 @@ class Card
         return $this->value;
     }
 
-     /**
+    /**
  * @param int $cardValue
  */
     public function setValue($cardValue): void

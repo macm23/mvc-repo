@@ -6,9 +6,8 @@ use App\Dice\Dice;
 
 class DiceHand
 {
-
-     /** 
- * @var Dice[] 
+    /**
+ * @var Dice[]
  */
     private $hand = [];
 
@@ -29,7 +28,7 @@ class DiceHand
         return count($this->hand);
     }
 
-    
+
     /**
      * @return int[]
      */

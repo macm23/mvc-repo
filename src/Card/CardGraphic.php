@@ -4,9 +4,9 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-     /**
-     * @var string[] Array of card representations
-     */
+    /**
+    * @var string[] Array of card representations
+    */
     private $representation = [
         '🃑',
         '🃒',

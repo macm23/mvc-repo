@@ -19,7 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
 {
-
     #[Route("/game/session", name: "session_landing_page")]
     public function session(
         SessionInterface $session
@@ -60,12 +59,13 @@ class GameController extends AbstractController
     }
 
 
-  
+
     #[Route("/game/play", name: "play_cardgame_get", methods: ['GET'])]
-    public function playCardGamePost(        SessionInterface $session
+    public function playCardGamePost(
+        SessionInterface $session
     ): Response {
 
-        
+
         $cardBackValues = range(1, 1);
 
         $cardDeck = [];
@@ -83,12 +83,12 @@ class GameController extends AbstractController
 
 
         $data = [
-            "cardDeckBack" => $cardDeck      
+            "cardDeckBack" => $cardDeck
         ];
 
 
 
-      return $this->render('game/play_cardgame.html.twig', $data);
+        return $this->render('game/play_cardgame.html.twig', $data);
 
 
     }
@@ -101,22 +101,22 @@ class GameController extends AbstractController
     ): Response {
 
 
-    $hand = new CardGameHand();
-    for ($i = 1; $i <= 1; $i++) {
-        $hand->add(new CardGameGraphic());
+        $hand = new CardGameHand();
+        for ($i = 1; $i <= 1; $i++) {
+            $hand->add(new CardGameGraphic());
 
-        
-    }
 
-     $hand->shuffle();
-    
+        }
+
+        $hand->shuffle();
+
         $session->set("cardgame_hand", $hand);
         $session->set("cardgame_card", 0);
         $session->set("cardgame_round", 0);
-        $session->set("cardgame_total", 0);        
+        $session->set("cardgame_total", 0);
 
 
-          return $this->redirectToRoute('play_cardgame_3');
+        return $this->redirectToRoute('play_cardgame_3');
 
     }
 
@@ -126,17 +126,17 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
 
- /**
-         * @var int[] $cardValues
-         */
+        /**
+                * @var int[] $cardValues
+                */
 
-      
+
         $cardValues = range(1, 1);
 
         $cardDeckBack = [];
 
         foreach ($cardValues as $cardValue) {
-            $card = new CardGameGraphicBack(); 
+            $card = new CardGameGraphicBack();
 
             $card->setValue($cardValue);
 
@@ -149,7 +149,7 @@ class GameController extends AbstractController
 
         $cardgame_hand = $session->get("cardgame_hand");
 
-         /**
+        /**
      * @var CardGameHand $cardgame_hand
      */
 
@@ -164,66 +164,65 @@ class GameController extends AbstractController
         return $this->render('game/play_cardgame_play.html.twig', $data);
     }
 
-    
-   
+
+
     #[Route("/game/drawcard", name: "draw_card", methods: ['POST'])]
     public function drawcard(
         SessionInterface $session
     ): Response {
-       
- /**
-         * @var CardGameHand
-         */
 
-    $hand = $session->get("cardgame_hand");
-    $hand->shuffle();
+        /**
+                * @var CardGameHand
+                */
+
+        $hand = $session->get("cardgame_hand");
+        $hand->shuffle();
 
 
-    $roundTotal = $session->get("cardgame_round");
-    $round = 0;
+        $roundTotal = $session->get("cardgame_round");
+        $round = 0;
 
-    $values = $hand->getValues();
-    foreach ($values as $value) {   
+        $values = $hand->getValues();
+        foreach ($values as $value) {
 
-         $round += $value;
+            $round += $value;
 
-         $totalPoints = $roundTotal + $round; 
+            $totalPoints = $roundTotal + $round;
 
-       if ($totalPoints > 21)  {
-         
-            $this->addFlash(
-                'Warning!',
-                'You lost'
-            );
+            if ($totalPoints > 21) {
 
-            break;
-          }
-          else if ($totalPoints === 21)
-          {
-          $this->addFlash(
-            'Warning!',
-            'You won!'
-        );
+                $this->addFlash(
+                    'Warning!',
+                    'You lost'
+                );
 
-        break;
+                break;
+            } elseif ($totalPoints === 21) {
+                $this->addFlash(
+                    'Warning!',
+                    'You won!'
+                );
+
+                break;
+            }
+
         }
 
-    }
- 
-    $cardgame_hand = $session->get("cardgame_hand");
+        $cardgame_hand = $session->get("cardgame_hand");
 
-    $session->set("cardgame_round", $roundTotal + $round);
-    $session->set("cardgame_total", $round);
+        $session->set("cardgame_round", $roundTotal + $round);
+        $session->set("cardgame_total", $round);
 
 
 
-    return $this->redirectToRoute('play_cardgame_3');
+        return $this->redirectToRoute('play_cardgame_3');
     }
 
     #[Route("/game/playbank", name: "play_cardgame_bank_get", methods: ['GET'])]
-    public function playCardBank(): Response {
+    public function playCardBank(): Response
+    {
 
-        
+
         $cardBackValues = range(1, 1);
 
         $cardDeck = [];
@@ -243,12 +242,12 @@ class GameController extends AbstractController
        ];
 
 
-      return $this->render('game/play_cardgame_bank.html.twig', $data);
- 
+        return $this->render('game/play_cardgame_bank.html.twig', $data);
+
 
     }
 
-    
+
 
     #[Route("/game/playbank", name: "play_cardgame_bank_post", methods: ['POST'])]
     public function playCardGameBank2(
@@ -256,28 +255,28 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
 
-    
+
 
         $takenCard = $request->request->get('one_card_bank');
-    
+
         $hand = new CardGameHand();
         for ($i = 1; $i <= 1; $i++) {
             $hand->add(new CardGameGraphic());
         }
-    
+
         $hand->shuffle();
-    
+
         $session->set("cardgame_hand_bank", $hand);
         $session->set("cardgame_card_bank", 0);
         $session->set("cardgame_round_bank", 0);
         $session->set("cardgame_total_bank", 0);
-        
 
-          return $this->redirectToRoute('playcardgame_bank');
+
+        return $this->redirectToRoute('playcardgame_bank');
 
     }
 
-    
+
 
     #[Route("/game/playbankplay", name: "playcardgame_bank", methods: ['GET'])]
     public function playCardGameBank(
@@ -285,13 +284,13 @@ class GameController extends AbstractController
     ): Response {
 
 
-        
+
         $cardValues = range(1, 1);
 
         $cardDeckBack = [];
 
         foreach ($cardValues as $cardValue) {
-            $card = new CardGameGraphicBack(); 
+            $card = new CardGameGraphicBack();
 
             $card->setValue($cardValue);
 
@@ -301,9 +300,9 @@ class GameController extends AbstractController
         }
 
         $cardgame_hand_bank = $session->get("cardgame_hand_bank");
-  /**
-     * @var CardGameHand $cardgame_hand_bank
-     */
+        /**
+           * @var CardGameHand $cardgame_hand_bank
+           */
         $data = [
 
             "cardDeckBack" => $cardDeckBack,
@@ -320,74 +319,75 @@ class GameController extends AbstractController
     }
 
 
-       
+
     #[Route("/game/drawcardbank", name: "draw_card_bank", methods: ['POST'])]
     public function drawcardBank(
         SessionInterface $session
     ): Response {
-        
- /**
-         * @var CardGameHand 
-         */
+
+        /**
+                * @var CardGameHand
+                */
 
 
-    $hand = $session->get("cardgame_hand_bank");
-    $hand->shuffle();
-
-    
-    $roundTotal = $session->get("cardgame_round_bank");
-    $round = 0;
-
-    
-    $totalValue = $session->get("cardgame_total_bank", 0);
-    $cardsLeft = $session->get('card_left_bank', 52);
-
-    $playerHand = $session->get("cardgame_total");
-
-
-    while ($roundTotal < 17) {
+        $hand = $session->get("cardgame_hand_bank");
         $hand->shuffle();
-        $values = $hand->getValues();
 
-        foreach ($values as $value) {
-            $roundTotal += $value;
-            $cardsLeft--;
 
-    
+        $roundTotal = $session->get("cardgame_round_bank");
+        $round = 0;
+
+
+        $totalValue = $session->get("cardgame_total_bank", 0);
+        $cardsLeft = $session->get('card_left_bank', 52);
+
+        $playerHand = $session->get("cardgame_total");
+
+
+        while ($roundTotal < 17) {
+            $hand->shuffle();
+            $values = $hand->getValues();
+
+            foreach ($values as $value) {
+                $roundTotal += $value;
+                $cardsLeft--;
+
+
+            }
         }
+
+        if ($roundTotal > 21) {
+            $this->addFlash(
+                'Warning!',
+                'The bank lost, you won!'
+            );
+        } elseif ($roundTotal == 21) {
+            $this->addFlash(
+                'Warning!',
+                'The bank won!'
+            );
+        } elseif ($roundTotal >= $playerHand) {
+            $this->addFlash(
+                'Warning!',
+                'The bank won!'
+            );
+        }
+
+        $session->set("cardgame_total_bank", $totalValue);
+        $session->set("cardgame_round_bank", $roundTotal);
+        $session->set("cardValuesBank", $hand->getString());
+
+        return $this->redirectToRoute('playcardgame_bank');
+
+
     }
 
-    if ($roundTotal > 21) {
-        $this->addFlash(
-            'Warning!',
-            'The bank lost, you won!'
-        );
-    } else if ($roundTotal == 21) {
-        $this->addFlash(
-            'Warning!',
-            'The bank won!'
-        );
-    } else if ($roundTotal >= $playerHand) {
-        $this->addFlash(
-            'Warning!',
-            'The bank won!'
-        );
-    }
-
-    $session->set("cardgame_total_bank", $totalValue);
-    $session->set("cardgame_round_bank", $roundTotal);
-    $session->set("cardValuesBank", $hand->getString());
-
-    return $this->redirectToRoute('playcardgame_bank');
 
 
-    }
 
-    
-
-      
     #[Route("/game/doc", name: "game_doc")]
-    public function gameDoc(): Response {
+    public function gameDoc(): Response
+    {
 
 
 

@@ -4,8 +4,6 @@ namespace App\Game;
 
 class CardGameGraphic extends CardGame
 {
-
-
     /**
      * @var string[] Array of card representations
      */
@@ -16,9 +14,9 @@ class CardGameGraphic extends CardGame
         '🂡', '🂢', '🂣', '🂤', '🂥', '🂦', '🂧', '🂨', '🂩', '🂪', '🂫', '🂭', '🂮'  // Clubs
     ];
 
-     /**
-     * @var int[] 
-     */
+    /**
+    * @var int[]
+    */
     private $values = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Spades
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, // Hearts
@@ -26,9 +24,9 @@ class CardGameGraphic extends CardGame
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13  // Clubs
     ];
 
- /**
-     * @var CardGameCard
-     */
+    /**
+        * @var CardGameCard
+        */
     public $card;
 
     public function __construct()
