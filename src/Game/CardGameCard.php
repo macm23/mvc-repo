@@ -2,7 +2,6 @@
 
 namespace App\Game;
 
-
 class CardGameCard
 {
     public string $representation;

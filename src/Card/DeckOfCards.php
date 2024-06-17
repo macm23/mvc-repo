@@ -6,7 +6,11 @@ use App\Card\Card;
 
 class DeckOfCards
 {
-    private $deck = [];
+
+     /**
+ * @var Card[]
+ */
+    private array $deck = [];
 
     public function add(Card $card): void
     {
@@ -28,6 +32,9 @@ class DeckOfCards
         return count($this->deck);
     }
 
+        /**
+     * @return int[]
+     */
     public function getValues(): array
     {
         $values = [];
@@ -37,6 +44,9 @@ class DeckOfCards
         return $values;
     }
 
+        /**
+     * @return string[]
+     */
     public function getString(): array
     {
         $values = [];

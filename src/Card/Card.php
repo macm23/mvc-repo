@@ -4,11 +4,14 @@ namespace App\Card;
 
 class Card
 {
+     /**
+     * @var int
+     */
     protected $value;
 
     public function __construct() // sätter värdet till noll varje gång man instanserar klassen
     {
-        $this->value = null;
+        $this->value = 0;
     }
 
     public function shuffle(): int
@@ -23,6 +26,9 @@ class Card
         return $this->value;
     }
 
+     /**
+ * @param int $cardValue
+ */
     public function setValue($cardValue): void
     {
         $this->value = $cardValue;

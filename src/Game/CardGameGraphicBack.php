@@ -5,6 +5,9 @@ namespace App\Game;
 class CardGameGraphicBack extends CardGame
 {
     //
+      /**
+     * @var string[] Array of card representation
+     */
     private $representation = [
         '🂠'
     ];
@@ -23,4 +26,3 @@ class CardGameGraphicBack extends CardGame
 
 
 }
-

@@ -190,8 +190,7 @@ class CardGameControllerJson
     #[Route("/api/deck/draw/{num<\d+>}", name: "draw_get_cards", methods: ['GET'])]
     public function drawJsonGet(
         Request $request,
-        SessionInterface $session,
-        $num
+        SessionInterface $session
     ): Response {
 
         $num = $request->attributes->get('num');
@@ -241,7 +240,7 @@ class CardGameControllerJson
             "bank_points" => $session->get("cardgame_round_bank")
         ];
 
-   
+
         $response = new JsonResponse($data);
         $response->setEncodingOptions(JSON_UNESCAPED_SLASHES);
         $response->setEncodingOptions(JSON_UNESCAPED_UNICODE);

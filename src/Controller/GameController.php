@@ -86,7 +86,11 @@ class GameController extends AbstractController
             "cardDeckBack" => $cardDeck      
         ];
 
+
+
       return $this->render('game/play_cardgame.html.twig', $data);
+
+
     }
 
 
@@ -100,6 +104,8 @@ class GameController extends AbstractController
     $hand = new CardGameHand();
     for ($i = 1; $i <= 1; $i++) {
         $hand->add(new CardGameGraphic());
+
+        
     }
 
      $hand->shuffle();
@@ -120,8 +126,11 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
 
+ /**
+         * @var int[] $cardValues
+         */
 
-        
+      
         $cardValues = range(1, 1);
 
         $cardDeckBack = [];
@@ -139,6 +148,10 @@ class GameController extends AbstractController
 
 
         $cardgame_hand = $session->get("cardgame_hand");
+
+         /**
+     * @var CardGameHand $cardgame_hand
+     */
 
         $data = [
             "cardDeckBack" => $cardDeckBack,
@@ -158,6 +171,9 @@ class GameController extends AbstractController
         SessionInterface $session
     ): Response {
        
+ /**
+         * @var CardGameHand
+         */
 
     $hand = $session->get("cardgame_hand");
     $hand->shuffle();
@@ -263,7 +279,7 @@ class GameController extends AbstractController
 
     
 
-    #[Route("/game/playbank", name: "playcardgame_bank", methods: ['GET'])]
+    #[Route("/game/playbankplay", name: "playcardgame_bank", methods: ['GET'])]
     public function playCardGameBank(
         SessionInterface $session
     ): Response {
@@ -285,13 +301,16 @@ class GameController extends AbstractController
         }
 
         $cardgame_hand_bank = $session->get("cardgame_hand_bank");
-
+  /**
+     * @var CardGameHand $cardgame_hand_bank
+     */
         $data = [
 
             "cardDeckBack" => $cardDeckBack,
             "resultBank" => $session->get("cardgame_card_bank"),
             "roundBank" => $session->get("cardgame_round_bank"),
             "totalBank" => $session->get("cardgame_total_bank"),
+            "cardsLeft" => $session->get("card_left"),
             "playerHand" => $session->get("cardgame_total"),
             "cardValuesBank" => $cardgame_hand_bank->getString()
         ];
@@ -306,17 +325,11 @@ class GameController extends AbstractController
     public function drawcardBank(
         SessionInterface $session
     ): Response {
+        
+ /**
+         * @var CardGameHand 
+         */
 
-
- 
-    $cardgame_hand = $session->get("cardgame_hand");
-
-    $session->set("card_left", $cardsLeft);
-    $session->set("cardgame_round_bank", $roundTotal + $round);
-    $session->set("cardgame_total_bank", $round);
-    $session->set("cardValuesBank", $cardgame_hand->getString());
-
-    return $this->redirectToRoute('playcardgame_bank');
 
     $hand = $session->get("cardgame_hand_bank");
     $hand->shuffle();
@@ -324,7 +337,11 @@ class GameController extends AbstractController
     
     $roundTotal = $session->get("cardgame_round_bank");
     $round = 0;
+
+    
     $totalValue = $session->get("cardgame_total_bank", 0);
+    $cardsLeft = $session->get('card_left_bank', 52);
+
     $playerHand = $session->get("cardgame_total");
 
 
@@ -334,10 +351,9 @@ class GameController extends AbstractController
 
         foreach ($values as $value) {
             $roundTotal += $value;
+            $cardsLeft--;
 
-            if ($roundTotal >= 17) {
-                break;
-            }
+    
         }
     }
 
@@ -358,12 +374,12 @@ class GameController extends AbstractController
         );
     }
 
-    $session->set("card_left_bank", $cardsLeft);
     $session->set("cardgame_total_bank", $totalValue);
     $session->set("cardgame_round_bank", $roundTotal);
     $session->set("cardValuesBank", $hand->getString());
 
     return $this->redirectToRoute('playcardgame_bank');
+
 
     }
 
@@ -372,6 +388,7 @@ class GameController extends AbstractController
       
     #[Route("/game/doc", name: "game_doc")]
     public function gameDoc(): Response {
+
 
 
         return $this->render('game/doc_cardgame.html.twig');
